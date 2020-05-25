@@ -1,0 +1,73 @@
+.photoItem {
+  position: relative;
+
+  &:hover {
+    .photoItem__likesAndDate {
+      display: flex;
+    }
+    .photoItem__authorContainer {
+      display: flex;
+    }
+
+    .photoItem__photo {
+      filter: brightness(0.4);
+    }
+  }
+}
+
+.photoItem__photo {
+  width: 100%;
+  transition: filter 200ms;
+  display: block
+}
+
+.photoItem__likesAndDate {
+  font-size: 14px;
+  display: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  padding: 10px;
+  position: absolute;
+
+}
+.photoItem__authorContainer {
+  display: none;
+  top: 0;
+  padding: 10px;
+  position: absolute;
+  align-items: center;
+}
+.photoItem__authorAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.photoItem__author {
+  color: white;
+  padding: 0 5px;
+}
+
+.photoItem__likesBtn {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  color: #edeeee;
+  fill: currentColor;
+  &:hover {
+    color: #9c9c9c;
+  }
+}
+.photoItem__likesContainer {
+  display: flex;
+}
+.photoItem__likesCount {
+  color: white;
+  padding: 0 5px;
+}
+
+.photoItem__date {
+  color: white;
+}

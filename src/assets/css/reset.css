@@ -1,0 +1,55 @@
+html {
+  box-sizing: border-box;
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Proxima Nova Cn Rg';
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain; 
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:focus {
+  outline: none;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.center {
+  margin: 0 auto;
+}
