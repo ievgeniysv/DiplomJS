@@ -10,11 +10,15 @@ export class UnsplashPhotos extends React.Component {
 
   componentDidMount() {
     this.props.getPhotos();
+    this.props.getRandomPhoto();
     window.addEventListener('scroll', this.downloadPhotos);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll',this.downloadPhotos);
   }
 
   downloadPhotos = () => {
-    const BEFORE_BOTTOM = 300;
+    const BEFORE_BOTTOM = 450;
     let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
     let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
     let clientHeight = document.documentElement.clientHeight || window.innerHeight;
@@ -44,13 +48,15 @@ export class UnsplashPhotos extends React.Component {
     })
     return (
       <>
-        <RandomPhoto/>
+        <RandomPhoto
+          randomPhoto={this.props.randomPhoto}
+        />
         <div className={`${s.photoContainer} center`}>
           <ResponsiveMasonry
             columnsCountBreakPoints={{320: 1, 450: 2, 768: 3}}
           >
             <Masonry
-              gutter={10}
+              gutter={'10'}
             >
               {photoList}
             </Masonry>
@@ -64,6 +70,7 @@ export class UnsplashPhotos extends React.Component {
 const mapStateToProps = (state) => {
   return {
     photos: state.unsplashPhoto.photos,
+    randomPhoto:state.unsplashPhoto.randomPhoto,
   }
 }
 
@@ -74,7 +81,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     addPhotos: () => {
       dispatch(unsplashPhotosAC.addPhotos());
-    }
+    },
+    getRandomPhoto: () => {
+      dispatch(unsplashPhotosAC.getRandomPhoto());
+    },
+
   }
 }
 

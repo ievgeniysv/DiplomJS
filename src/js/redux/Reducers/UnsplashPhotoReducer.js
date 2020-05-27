@@ -8,6 +8,7 @@ const initialState = {
 
 export const unsplashPhotoReducer = (state = initialState, action) => {
   switch (action.type) {
+
     case unsplashPhotoAT.GET_PHOTOS:
       state = {...state};
       state.photos = action.photos;

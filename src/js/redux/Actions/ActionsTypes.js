@@ -5,5 +5,6 @@ export const unsplashPhotoAT = {
 };
 
 export  const authAT = {
-  SET_AUTH: 'SET_AUTH',
+  SET_AUTH_INFO: 'SET_AUTH_INFO',
+  SET_USER_INFO: 'SET_USER_INFO',
 }

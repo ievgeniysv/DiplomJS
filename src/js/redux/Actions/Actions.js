@@ -1,6 +1,5 @@
 import { operationsPhotos } from '../Operations/OperationsPhotos';
 import { operationsAuth } from '../Operations/OperationsAuth';
-import { authAT } from './ActionsTypes';
 
 export const unsplashPhotosAC = {
   getPhotos(){
@@ -15,12 +14,14 @@ export const unsplashPhotosAC = {
 }
 
 export const authAC = {
-  setAuth(code){
-    return {
-      type: authAT.SET_AUTH,
-      isAuth: true,
-      bearerToken: code
-    }
+  getAuthenticationUrl(){
+    return operationsAuth.getAuthenticationUrl();
   },
 
+  setAuthInfo(){
+    return operationsAuth.setAuthInfo();
+  },
+  setCurrentUser(){
+    return operationsAuth.setCurrentUser();
+  }
 }
