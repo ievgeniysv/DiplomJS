@@ -3,14 +3,14 @@ import Unsplash, { toJson } from 'unsplash-js';
 const unsplash = new Unsplash({
   accessKey: "4AukpNrZaTVD3d0sNg_GlowTUTSvYgio4_dOOXDJMg0",
   secret: "8f4i3XLhfCtQbUskzAKrjBj1hIrZ28cdC8tneQsTai8",
-  callbackUrl: "http://localhost:3000/auth"
+  callbackUrl: "http://localhost:3000/auth",
 });
+
 const PAGE = 1;
 const PER_PAGE = 15;
 
 export const unsplashPhotosAPI = {
   getUnsplashPhotos() {
-
     // noinspection JSUnresolvedVariable
     return unsplash.photos.listPhotos(PAGE, PER_PAGE, 'latest').then(toJson);
   },
@@ -22,7 +22,18 @@ export const unsplashPhotosAPI = {
   getRandomPhoto() {
     // noinspection JSUnresolvedVariable
     return unsplash.photos.getRandomPhoto().then(toJson);
+  },
+
+  likePhoto(id) {
+    // noinspection JSUnresolvedVariable
+    return unsplash.photos.likePhoto(id).then(toJson);
+  },
+
+  dislikePhoto(id) {
+    // noinspection JSUnresolvedVariable
+    return unsplash.photos.unlikePhoto(id).then(toJson);
   }
+
 }
 
 export const authAPI = {

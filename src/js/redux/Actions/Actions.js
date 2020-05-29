@@ -1,6 +1,16 @@
 import { operationsPhotos } from '../Operations/OperationsPhotos';
 import { operationsAuth } from '../Operations/OperationsAuth';
 import { operationsPhotoAndUserDetails } from '../Operations/OperationsUserAndPhotoDetails';
+import { commonAT } from './ActionsTypes';
+
+export const commonAC = {
+  toggleIsFetching(isFetching){
+    return {
+      type: commonAT.TOGGLE_IS_FETCHING,
+      isFetching
+    }
+  }
+}
 
 export const unsplashPhotosAC = {
   getPhotos(){
@@ -11,6 +21,9 @@ export const unsplashPhotosAC = {
   },
   getRandomPhoto(){
     return operationsPhotos.getRandomPhoto();
+  },
+  toggleLikeOnPhoto(id, like){
+    return operationsPhotos.toggleLikeOnPhoto(id, like);
   }
 }
 

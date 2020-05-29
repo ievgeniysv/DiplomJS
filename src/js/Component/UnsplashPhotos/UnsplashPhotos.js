@@ -19,14 +19,18 @@ export class UnsplashPhotos extends React.Component {
   }
 
   downloadPhotos = () => {
-    const BEFORE_BOTTOM = 450;
-    let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-    let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
-    let clientHeight = document.documentElement.clientHeight || window.innerHeight;
-    let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= (scrollHeight - BEFORE_BOTTOM);
-    if (scrolledToBottom) {
-      this.props.addPhotos();
-    }
+    // const BEFORE_BOTTOM = 450;
+    // let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+    // let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+    // let clientHeight = document.documentElement.clientHeight || window.innerHeight;
+    // let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= (scrollHeight - BEFORE_BOTTOM);
+    // if (scrolledToBottom) {
+    //   this.props.addPhotos();
+    // }
+  }
+
+  toggleLikeOnPhotoHandler = (id, like) => {
+    this.props.toggleLikeOnPhoto(id, like);
   }
 
   render() {
@@ -46,6 +50,7 @@ export class UnsplashPhotos extends React.Component {
           user={p.user}
           userImg={p.user.profile_image.small}
           url={p.urls.small}
+          toggleLikeOnPhotoHandler={this.toggleLikeOnPhotoHandler}
         />
       )
     })
@@ -88,7 +93,9 @@ const mapDispatchToProps = (dispatch) => {
     getRandomPhoto: () => {
       dispatch(unsplashPhotosAC.getRandomPhoto());
     },
-
+    toggleLikeOnPhoto: (id, like) => {
+      dispatch(unsplashPhotosAC.toggleLikeOnPhoto(id, like));
+    }
   }
 }
 

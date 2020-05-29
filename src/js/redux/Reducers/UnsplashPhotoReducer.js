@@ -3,7 +3,7 @@ import { unsplashPhotoAT } from '../Actions/ActionsTypes';
 const initialState = {
   photos: [],
   page: 1,
-  randomPhoto:{}
+  randomPhoto: {}
 };
 
 export const unsplashPhotoReducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ export const unsplashPhotoReducer = (state = initialState, action) => {
         photos: [...state.photos, ...action.photos],
         page: state.page + 1,
       };
-     state.photos =  removeDuplicates(state.photos, 'id');
+      state.photos = removeDuplicates(state.photos, 'id');
       return state;
 
     case unsplashPhotoAT.GET_RANDOM_PHOTO:
@@ -29,8 +29,25 @@ export const unsplashPhotoReducer = (state = initialState, action) => {
         randomPhoto: {...state.randomPhoto}
       };
       state.randomPhoto = action.photo;
+      return state;
 
-      return state
+    case unsplashPhotoAT.TOGGLE_LIKE_ON_PHOTO:
+      state = {
+        ...state,
+      };
+
+      state.photos = state.photos.map(p => {
+        if (p.id === action.id) {
+          p.liked_by_user = action.likedByUser;
+          p.likes = p.likes + action.incrementLike;
+          return p;
+        } else {
+          return p;
+        }
+      });
+
+      return state;
+
     default:
       return state;
   }
@@ -41,11 +58,11 @@ function removeDuplicates(originalArray, prop) {
   let newArray = [];
   let lookupObject = {};
 
-  for(let i in originalArray) {
+  for (let i in originalArray) {
     lookupObject[originalArray[i][prop]] = originalArray[i];
   }
 
-  for(let i in lookupObject) {
+  for (let i in lookupObject) {
     newArray.push(lookupObject[i]);
   }
   return newArray;

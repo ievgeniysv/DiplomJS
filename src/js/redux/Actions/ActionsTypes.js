@@ -1,7 +1,12 @@
+export const commonAT = {
+  TOGGLE_IS_FETCHING: 'TOGGLE_IS_FETCHING',
+}
+
 export const unsplashPhotoAT = {
   GET_PHOTOS: 'GET_PHOTOS',
   ADD_PHOTOS: 'ADD_PHOTOS',
   GET_RANDOM_PHOTO: 'GET_RANDOM_PHOTO',
+  TOGGLE_LIKE_ON_PHOTO: 'TOGGLE_LIKE_ON_PHOTO'
 };
 
 export const authAT = {

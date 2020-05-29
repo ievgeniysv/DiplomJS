@@ -16,6 +16,7 @@
   align-items: center;
   font-size: 17px;
   color: #4b4f60;
+  text-align: center;
   padding-bottom: 15px;
   @media (max-width: 450px) {
     font-size: 14px;
@@ -33,6 +34,20 @@
   fill: currentColor;
   background-color: #fff;
   border:1px solid #d1d1d1;
+  border-radius: 5px;
+  &:hover {
+    color: #9c9c9c;
+    border:1px solid #767676;
+  }
+}
+
+.photoLikeBtnLiked{
+  padding: 5px;
+  height: 34px;
+  color: #fff;
+  fill: currentColor;
+  background-color: red;
+  border: 1px solid #d1d1d1;
   border-radius: 5px;
 }
 

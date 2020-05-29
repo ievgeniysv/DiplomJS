@@ -8,7 +8,7 @@ export const Header = ({currentUser}) => {
   return (
     <>
       <header className={`${s.header} center`}>
-        <a href="" className={s.title}>MyUnsplashApp</a>
+        <NavLink to={'/'} className={s.title}>MyUnsplashApp</NavLink>
         <form action="" className={s.searchForm}>
           <input
             id={'searchForm__field'}

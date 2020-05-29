@@ -38,4 +38,32 @@ export const operationsPhotos = {
         });
     }
   },
+
+  toggleLikeOnPhoto: (id, like) => {
+    return (dispatch) => {
+
+      if(like) {
+        unsplashPhotosAPI.dislikePhoto(id)
+          .then(() => {
+            dispatch({
+              type: unsplashPhotoAT.TOGGLE_LIKE_ON_PHOTO,
+              likedByUser: false,
+              id,
+              incrementLike: -1
+            });
+          });
+      } else {
+        unsplashPhotosAPI.likePhoto(id)
+          .then(response => {
+            dispatch({
+              type: unsplashPhotoAT.TOGGLE_LIKE_ON_PHOTO,
+              likedByUser: true,
+              id,
+              incrementLike: 1
+            });
+          });
+      }
+    }
+  }
+
 }
