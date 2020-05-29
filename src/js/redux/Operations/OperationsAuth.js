@@ -23,15 +23,14 @@ export const operationsAuth = {
     return (dispatch) => {
       authAPI.getCurrentUser()
         .then(response => {
-          if(response.error){
+          if (response.errors) {
             return null
           } else {
             dispatch({
-              type: authAT.SET_USER_INFO,
+              type: authAT.SET_CURRENT_USER_INFO,
               currentUser: response
             });
           }
-
         })
     }
   }

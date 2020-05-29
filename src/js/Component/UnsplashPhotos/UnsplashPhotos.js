@@ -13,8 +13,9 @@ export class UnsplashPhotos extends React.Component {
     this.props.getRandomPhoto();
     window.addEventListener('scroll', this.downloadPhotos);
   }
+
   componentWillUnmount() {
-    window.removeEventListener('scroll',this.downloadPhotos);
+    window.removeEventListener('scroll', this.downloadPhotos);
   }
 
   downloadPhotos = () => {
@@ -32,15 +33,17 @@ export class UnsplashPhotos extends React.Component {
     const photos = this.props.photos;
     const photoList = photos.map(p => {
       // noinspection JSUnresolvedVariable
-      const date = new Date(p.created_at).toLocaleString('ru');
+      let date = new Date(p.created_at).toLocaleString('ru');
+      date = date.split(',');
       // noinspection JSUnresolvedVariable
       return (
         <Photos
           key={p.id}
           id={p.id}
           likes={p.likes}
-          createdAt={date}
-          user={p.user.name}
+          likedByUser={p.liked_by_user}
+          createdAt={date[0]}
+          user={p.user}
           userImg={p.user.profile_image.small}
           url={p.urls.small}
         />
@@ -56,7 +59,7 @@ export class UnsplashPhotos extends React.Component {
             columnsCountBreakPoints={{320: 1, 450: 2, 768: 3}}
           >
             <Masonry
-              gutter={'10'}
+              gutter={10}
             >
               {photoList}
             </Masonry>
@@ -70,7 +73,7 @@ export class UnsplashPhotos extends React.Component {
 const mapStateToProps = (state) => {
   return {
     photos: state.unsplashPhoto.photos,
-    randomPhoto:state.unsplashPhoto.randomPhoto,
+    randomPhoto: state.unsplashPhoto.randomPhoto,
   }
 }
 

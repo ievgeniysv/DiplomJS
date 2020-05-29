@@ -1,0 +1,55 @@
+.userInfo {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding:0 10px 15px 10px;
+}
+
+.userInfo__avatar {
+  min-width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.userInfo__nameAndInfo {
+  padding-left: 30px;
+  font-size: 17px;
+  color: #4b4f60;
+  @media (max-width: 450px) {
+    font-size: 14px;
+  }
+}
+
+.userInfo__name {
+  font-size: 35px;
+  color: #4b4f6d;
+  @media (max-width: 450px) {
+    font-size: 25px;
+  }
+}
+
+.userInfo__location {
+}
+
+.userInfo__bio {
+  padding: 10px 0;
+}
+
+.photosAndLikesCount {
+  display: flex;
+  justify-content: space-around;
+  font-size: 17px;
+  color: #3d4044;
+  @media (max-width: 450px) {
+    font-size: 14px;
+    flex-direction: column;
+    min-height: 55px;
+  }
+}
+.count {
+  font-weight: bold;
+  padding: 0 10px;
+  color: #032e4c;
+}

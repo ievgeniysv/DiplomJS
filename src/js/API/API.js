@@ -48,7 +48,18 @@ export const authAPI = {
     }
   },
   getCurrentUser() {
-   // noinspection JSUnresolvedVariable
+    // noinspection JSUnresolvedVariable
     return unsplash.currentUser.profile().then(toJson);
+  }
+}
+
+export const photoAndUserDetailsAPI = {
+  getUserAndPhotoInfo(userName, photoId) {
+    // noinspection JSUnresolvedVariable
+    return Promise.all([
+        unsplash.users.profile(userName).then(toJson),
+        unsplash.photos.getPhoto(photoId).then(toJson),
+      ]
+    );
   }
 }

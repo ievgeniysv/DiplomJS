@@ -4,7 +4,12 @@ export const unsplashPhotoAT = {
   GET_RANDOM_PHOTO: 'GET_RANDOM_PHOTO',
 };
 
-export  const authAT = {
+export const authAT = {
   SET_AUTH_INFO: 'SET_AUTH_INFO',
+  SET_CURRENT_USER_INFO: 'SET_CURRENT_USER_INFO',
+}
+
+export const photoAndUserDetailsAT = {
   SET_USER_INFO: 'SET_USER_INFO',
+  SET_PHOTO_INFO: 'SET_PHOTO_INFO',
 }

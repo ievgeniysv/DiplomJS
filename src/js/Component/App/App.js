@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../Header/Header';
 import { UnsplashPhotos } from '../UnsplashPhotos/UnsplashPhotos';
-import { UserProfile } from '../UserProfile/UserProfile';
+import { UserAndPhotoDetails } from '../UserAndPhotoDetails/UserAndPhotoDetails';
 // noinspection ES6CheckImport
 import { Route } from 'react-router-dom';
 import { Auth, Login } from '../Login/Login';
@@ -10,26 +10,20 @@ import { authAC } from '../../redux/Actions/Actions';
 
 export class App extends React.Component {
 
-  componentDidMount() {
-    this.props.setCurrentUser();
-  }
+  // componentDidMount() {
+  //   this.props.setCurrentUser();
+  // }
 
   render() {
     return (
       <>
-        <Header/>
-        <Route exact path="/" render={() => {
-          return <UnsplashPhotos/>
-        }}/>
-        <Route path="/profile" render={() => {
-          return <UserProfile/>
-        }}/>
-        <Route path="/login" render={() => {
-          return <Login/>
-        }}/>
-        <Route path="/auth" render={() => {
-          return <Auth/>
-        }}/>
+        <Header
+          currentUser={this.props.currentUser}
+        />
+        <Route exact path="/" component={UnsplashPhotos}/>
+        <Route path="/profile/:userName?/:photoId?" component={UserAndPhotoDetails}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/auth" component={Auth}/>
       </>
     );
   }

@@ -14,7 +14,7 @@ export const loginReducer = (state = initialState, action) => {
         isAuth: true,
         bearerToken: action.bearerToken,
       };
-    case authAT.SET_USER_INFO:
+    case authAT.SET_CURRENT_USER_INFO:
       state = {
         ...state,
         isAuth: true,

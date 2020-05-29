@@ -1,5 +1,6 @@
 import { operationsPhotos } from '../Operations/OperationsPhotos';
 import { operationsAuth } from '../Operations/OperationsAuth';
+import { operationsPhotoAndUserDetails } from '../Operations/OperationsUserAndPhotoDetails';
 
 export const unsplashPhotosAC = {
   getPhotos(){
@@ -23,5 +24,11 @@ export const authAC = {
   },
   setCurrentUser(){
     return operationsAuth.setCurrentUser();
+  }
+}
+
+export const photoAndUserDetailsAC = {
+  setUserAndPhotoInfo(userName, photoId){
+    return operationsPhotoAndUserDetails.getUserAndPhotoInfo(userName, photoId);
   }
 }
