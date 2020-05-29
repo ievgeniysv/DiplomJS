@@ -3,15 +3,22 @@ import s from './PhotoDetails.scss';
 import { MainPreloader } from '../Common/MainPreloader';
 
 export const PhotoDetails = (props) => {
-  const {likes, description, location, urls, liked_by_user} = props.photo
+  const {likes, description, location, urls, liked_by_user, id} = props.photo;
+  const toggleLikeOnPhotoDetails = props.toggleLikeOnPhotoDetails;
+  const likesHandler = (ev, like) => {
+    toggleLikeOnPhotoDetails(ev.target.closest(`.${s.photo}`).id, like);
+  }
+
   if (!urls) {
     return <MainPreloader/>
   } else {
+    // noinspection JSUnresolvedVariable
     return (
-      <div className={s.photo}>
+      <div className={s.photo} id={id}>
         <div className={`${s.photoInfo} center`}>
           <div className={s.photolikes}>
             <button
+              onClick={(ev)=>{likesHandler(ev, liked_by_user)}}
               title="Like photo"
               className={
                 liked_by_user ?

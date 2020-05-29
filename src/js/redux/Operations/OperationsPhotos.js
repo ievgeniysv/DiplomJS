@@ -1,5 +1,6 @@
 import { unsplashPhotosAPI } from '../../API/API';
 import { unsplashPhotoAT } from '../Actions/ActionsTypes';
+import { commonAC } from '../Actions/Actions';
 
 export const operationsPhotos = {
   getPhotos: () => {
@@ -16,13 +17,17 @@ export const operationsPhotos = {
 
   addPhotos: () => {
     return (dispatch, getState) => {
+      dispatch(commonAC.toggleIsFetching(true));
       let page = getState().unsplashPhoto.page + 1;
       unsplashPhotosAPI.addUnsplashPhotos(page)
         .then(response => {
           dispatch({
             type: unsplashPhotoAT.ADD_PHOTOS,
             photos: response
-          })
+          });
+          if(Array.isArray(response)) {
+            dispatch(commonAC.toggleIsFetching(false));
+          }
         });
     }
   },
@@ -41,7 +46,6 @@ export const operationsPhotos = {
 
   toggleLikeOnPhoto: (id, like) => {
     return (dispatch) => {
-
       if(like) {
         unsplashPhotosAPI.dislikePhoto(id)
           .then(() => {
@@ -54,7 +58,7 @@ export const operationsPhotos = {
           });
       } else {
         unsplashPhotosAPI.likePhoto(id)
-          .then(response => {
+          .then(() => {
             dispatch({
               type: unsplashPhotoAT.TOGGLE_LIKE_ON_PHOTO,
               likedByUser: true,

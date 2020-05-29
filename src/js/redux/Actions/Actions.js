@@ -43,5 +43,8 @@ export const authAC = {
 export const photoAndUserDetailsAC = {
   setUserAndPhotoInfo(userName, photoId){
     return operationsPhotoAndUserDetails.getUserAndPhotoInfo(userName, photoId);
+  },
+  toggleLikeOnPhotoDetails(id, like){
+    return operationsPhotoAndUserDetails.toggleLikeOnPhotoDetails(id, like);
   }
 }

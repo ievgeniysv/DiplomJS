@@ -1,117 +1,14 @@
-.photoItem {
-  background-color: #4090db;
-  position: relative;
-  @media (min-width: 1024px){
-    &:hover {
-      .photoItem__likesContainer {
-        display: flex;
-      }
-      .photoItem__date {
-        display: flex;
-      }
-      .photoItem__authorContainer {
-        display: flex;
-      }
-      .photoItem__photo {
-        filter: brightness(0.4);
-      }
-    }
-  }
-  @media (max-width: 1024px) {
-    display: flex;
-    position: static;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 13px;
-    padding-bottom: 5px;
-  }
-}
-.imgLink{
+
+
+.photoContainer {
+  padding-top: 10px;
+  max-width: 1100px;
   width: 100%;
 }
-.photoItem__photo {
-  width: 100%;
-  transition: filter 200ms;
-  display: block;
-  @media (max-width: 1024px) {
-    margin-bottom: 5px;
+
+@media (max-width: 450px) {
+  .photoContainer div {
+    margin-top: 0!important;
   }
 }
 
-.photoItem__authorAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  @media (max-width: 1024px) {
-    width: 25px;
-    height: 25px;
-  }
-}
-
-.photoItem__likesBtn {
-  padding: 0;
-  width: 16px;
-  height: 16px;
-  color: #edeeee;
-  fill: currentColor;
-  &:hover {
-    color: #9c9c9c;
-  }
-}
-
-.photoItem__likesBtnIfUserLike {
-  padding: 0;
-  width: 16px;
-  height: 16px;
-  color:red;
-  fill: currentColor;
-}
-
-.photoItem__likesContainer {
-  display: none;
-  bottom: 0;
-  position: absolute;
-  left: 0;
-  padding: 10px 10px;
-  justify-content: space-between;
-  align-items: center;
-  @media (max-width: 1024px) {
-    display: flex;
-    position: static;
-  }
-}
-.photoItem__likesCount {
-  color: white;
-  padding: 0 5px;
-}
-.photoItem__author {
-  color: white;
-  padding: 0 5px;
-}
-
-.photoItem__authorContainer {
-  display: none;
-  top: 0;
-  position: absolute;
-  align-items: center;
-  padding: 10px;
-  @media (max-width: 1024px) {
-    padding: 0;
-    display: flex;
-    position: static;
-  }
-}
-.photoItem__date {
-  display: none;
-  color: white;
-  bottom: 0;
-  position: absolute;
-  right: 0;
-  padding: 0 10px 10px 0;
-  @media (max-width: 1024px) {
-    padding: 0 10px 0 0;
-    display: flex;
-    position: static;
-  }
-}

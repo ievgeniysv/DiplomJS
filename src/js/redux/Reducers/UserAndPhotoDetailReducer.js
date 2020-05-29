@@ -24,6 +24,15 @@ export const userAndPhotoDetailReducers = (state = initialState, action) => {
       state.photo = action.photo;
       return state;
 
+    case photoAndUserDetailsAT.TOGGLE_LIKE_ON_PHOTO_DETAILS:
+      state = {
+        ...state,
+        photo: {...state.photo}
+      };
+      state.photo.liked_by_user = action.likedByUser;
+      state.photo.likes =  state.photo.likes + action.incrementLike;
+      return state;
+
     default:
       return state;
   }

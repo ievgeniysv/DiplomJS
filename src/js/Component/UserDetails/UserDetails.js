@@ -1,8 +1,9 @@
 import React from 'react';
-import s from './UserDetails.scss'
+import s from './UserDetails.scss';
 
 export const UserDetails = (props) => {
   const {name, location, bio, total_photos, total_likes, total_collections, profile_image} = props.user
+  // noinspection JSUnresolvedVariable
   return (
     <div>
       <div className={`${s.userInfo} center`}>

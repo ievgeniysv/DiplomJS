@@ -1,5 +1,5 @@
-import { photoAndUserDetailsAPI } from '../../API/API';
-import { photoAndUserDetailsAT } from '../Actions/ActionsTypes';
+import { photoAndUserDetailsAPI, unsplashPhotosAPI } from '../../API/API';
+import { photoAndUserDetailsAT, unsplashPhotoAT } from '../Actions/ActionsTypes';
 import { commonAC } from '../Actions/Actions';
 
 export const operationsPhotoAndUserDetails = {
@@ -20,5 +20,29 @@ export const operationsPhotoAndUserDetails = {
         });
     }
   },
+
+  toggleLikeOnPhotoDetails: (id, like) => {
+    return (dispatch) => {
+      if(like) {
+        unsplashPhotosAPI.dislikePhoto(id)
+          .then(() => {
+            dispatch({
+              type: photoAndUserDetailsAT.TOGGLE_LIKE_ON_PHOTO_DETAILS,
+              likedByUser: false,
+              incrementLike: -1
+            });
+          });
+      } else {
+        unsplashPhotosAPI.likePhoto(id)
+          .then(() => {
+            dispatch({
+              type: photoAndUserDetailsAT.TOGGLE_LIKE_ON_PHOTO_DETAILS,
+              likedByUser: true,
+              incrementLike: 1
+            });
+          });
+      }
+    }
+  }
 
 }

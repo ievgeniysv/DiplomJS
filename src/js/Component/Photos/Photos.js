@@ -1,51 +1,40 @@
 import React from 'react';
+import { Photo } from './Photo/Photo';
 import s from './Photos.scss';
-import { NavLink } from 'react-router-dom';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
-export const Photos = ({id, likedByUser, likes, createdAt, user, url, userImg, toggleLikeOnPhotoHandler}) => {
-  const likesHandler = (ev, like) => {
-    toggleLikeOnPhotoHandler(ev.target.closest(`.${s.photoItem}`).id, like);
-  }
-
+export const Photos = (props) => {
+  const photos = props.photos;
+  const photoList = photos.map(p => {
+    // noinspection JSUnresolvedVariable
+    let date = new Date(p.created_at).toLocaleString('ru');
+    date = date.split(',');
+    // noinspection JSUnresolvedVariable
+    return (
+      <Photo
+        key={p.id}
+        id={p.id}
+        likes={p.likes}
+        likedByUser={p.liked_by_user}
+        createdAt={date[0]}
+        user={p.user}
+        userImg={p.user.profile_image.small}
+        url={p.urls.small}
+        toggleLikeOnPhotoHandler={props.toggleLikeOnPhoto}
+      />
+    )
+  })
   return (
-    <>
-      <div
-        id={id}
-        className={s.photoItem}>
-        <NavLink to={`/profile/${user.username}/${id}`} className={s.imgLink}>
-          <img
-            src={url}
-            alt=""
-            className={s.photoItem__photo}
-          />
-        </NavLink>
-        <div className={s.photoItem__authorContainer}>
-          <a href="">
-            <img
-              className={s.photoItem__authorAvatar}
-              src={userImg}
-              alt=""/>
-          </a>
-          <a href="">
-            <p className={s.photoItem__author}>{user.name}</p>
-          </a>
-        </div>
-        <div className={s.photoItem__likesContainer}>
-          <button
-            onClick={(ev)=>{likesHandler(ev, likedByUser)}}
-            className={
-              likedByUser ?
-                s.photoItem__likesBtnIfUserLike
-                :
-                s.photoItem__likesBtn}>
-            <svg version="1.1" viewBox="0 0 32 32" width="16" height="16" aria-hidden="false">
-              <path
-                d="M17.4 29c-.8.8-2 .8-2.8 0l-12.3-12.8c-3.1-3.1-3.1-8.2 0-11.4 3.1-3.1 8.2-3.1 11.3 0l2.4 2.8 2.3-2.8c3.1-3.1 8.2-3.1 11.3 0 3.1 3.1 3.1 8.2 0 11.4l-12.2 12.8z"/>
-            </svg>
-          </button>
-          <p className={s.photoItem__likesCount}>{likes}</p></div>
-        <p className={s.photoItem__date}>{createdAt}</p>
-      </div>
-    </>
-  );
+    <div className={`${s.photoContainer} center`}>
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{320: 1, 450: 2, 768: 3}}
+      >
+        <Masonry
+          gutter={10}
+        >
+          {photoList}
+        </Masonry>
+      </ResponsiveMasonry>
+    </div>
+  )
 };

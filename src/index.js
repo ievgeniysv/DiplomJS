@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import {store} from './js/redux/Store/Store';
 
 import './css/reset.css';
-import { App } from './js/Component/App/App'
+import { App } from './js/Container/App/App'
 
 
 ReactDOM.render(

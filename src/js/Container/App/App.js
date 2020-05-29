@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../Header/Header';
+import { Header } from '../../Component/Header/Header';
 import { UnsplashPhotos } from '../UnsplashPhotos/UnsplashPhotos';
 import { UserAndPhotoDetails } from '../UserAndPhotoDetails/UserAndPhotoDetails';
 // noinspection ES6CheckImport

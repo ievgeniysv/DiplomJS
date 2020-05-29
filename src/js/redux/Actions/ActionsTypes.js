@@ -17,4 +17,6 @@ export const authAT = {
 export const photoAndUserDetailsAT = {
   SET_USER_INFO: 'SET_USER_INFO',
   SET_PHOTO_INFO: 'SET_PHOTO_INFO',
+  TOGGLE_LIKE_ON_PHOTO_DETAILS: 'TOGGLE_LIKE_ON_PHOTO_DETAILS'
+
 }
