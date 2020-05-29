@@ -3,7 +3,8 @@ import Unsplash, { toJson } from 'unsplash-js';
 const unsplash = new Unsplash({
   accessKey: "4AukpNrZaTVD3d0sNg_GlowTUTSvYgio4_dOOXDJMg0",
   secret: "8f4i3XLhfCtQbUskzAKrjBj1hIrZ28cdC8tneQsTai8",
-  callbackUrl: "http://localhost:3000/auth",
+  //callbackUrl: "http://localhost:3000/auth",
+  callbackUrl: "http://evs1.na4u.ru/auth",
 });
 
 const PAGE = 1;

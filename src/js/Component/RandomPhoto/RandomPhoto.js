@@ -18,7 +18,7 @@ export const RandomPhoto = (props) => {
         <img src={urls.regular}
              alt=""
              className={s.photoOfTheDay__img}/>
-        <h1 className={s.photoOfTheDay__title}>All Photo From <a href={'unsplash.com'}>UNSPLASH.COM</a>
+        <h1 className={s.photoOfTheDay__title}>All Photo From <a href={'https://unsplash.com'}>UNSPLASH.COM</a>
           <span className={s.photoOfTheDay__text}>
           Unsplash is internet’s source of freely-usable images. Powered by creators everywhere.
         </span>
